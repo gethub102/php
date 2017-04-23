@@ -23,15 +23,15 @@
 	?>
 	</pre>
 
-	<br />
+	<br /><pre>
 	<?php
 		// var_dump(debug_backtrace());
 		function say_hello_to($name) {
 			echo "Hello " . $name . "! <br />";
-			var_dump(debug_backtrace());
+			var_dump(debug_backtrace()); // this could be pre printed 
 		}
 		say_hello_to("erveryone");
-	?>
+	?></pre>
 
 	<?php
 		/*
