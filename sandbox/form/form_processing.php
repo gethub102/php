@@ -12,9 +12,45 @@
 	<br />
 
 	<?php
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+		// set default value
+		if (isset($_POST['username'])) {
+			$username = $_POST['username'];	
+		} else {
+			$username = "";
+		}
+		if (isset($_POST['password'])) {
+			$password = $_POST['password'];	
+		} else {
+			$password = "";
+		}
+	?>
 
+	<?php
+		$username = isset($_POST['username']) ? $username : "";
+		$password = isset($_POST['password']) ? $password : "";
+	?>
+
+	<?php
+		// detect form submition
+		if (isset($_POST['submit'])) { // this is post request
+			echo "This form is submitted. <br />";
+			if (isset($_POST['username'])) {
+				$username = $_POST['username'];	
+			} else {
+				$username = "";
+			}
+			if (isset($_POST['password'])) {
+				$password = $_POST['password'];	
+			} else {
+				$password = "";
+			}
+		} else { // this is get request
+			$username = "";
+			$password = "";
+		}
+	?>
+
+	<?php
 		echo "{$username}: {$password}";
 	?>
 
