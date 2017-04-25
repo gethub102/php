@@ -1,4 +1,3 @@
-
 <?php
 // * presence
 // use trim 
