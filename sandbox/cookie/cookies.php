@@ -5,6 +5,16 @@
 	$value = "123";
 	$expire = time() + (60 * 60 * 24 * 7); // add seconds, => one week
 	setcookie($name, $value, $expire);
+
+	// wrong way - unset($_COOKIE["user_id"]);
+	// setcookie($name, null);
+	// setcookie($name, $value, time() - 3600);
+	
+	// setcookie($name);
+	// setcookie($name, null);
+	// setcookie($name, $value, time() - 3600);
+
+	// setcookie($name, null, time() - 3600);
 ?>
 
 <!DOCTYPE html>
