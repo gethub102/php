@@ -10,3 +10,36 @@
 	* html_errors = On
 	* output_buffering = Off
 	* date.timezone = "America/New_York". default timezone set, otherwise warning will comeout
+
+## Mysql
+	
+	```
+	mysql -u root --password=*****
+	```
+	or 
+	```
+	mysql -u root -p 
+	```
+
+	```
+	SHOW DATABASES;
+	CREATE DATABASE db_name;
+	USE db_name;
+	DROP DATABASE db_name;
+	```
+
+	```
+	GRANT ALL PRIVILEGES ON db_name.*
+	TO 'username'@'localhost'
+	IDENTIFIED BY 'password';
+	-- create a username with password for this db, access to all the db_name.*; only localhost access
+	```
+
+	```
+	SHOW GRANTS FOR 'username'@'localhost'
+	```
+
+	```
+	mysql -u 'username' -p 'db_name' 
+	-- to login db_name with username
+	```
