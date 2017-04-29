@@ -39,9 +39,13 @@
 <?php
 	// 3. use returned data (if any)
 	// $row = mysqli_fetch_row($result)
-while ($row = mysqli_fetch_row($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	// output data from each row
-	var_dump($row);
+	//var_dump($row); 
+	echo $row["id"] . "<br />";
+	echo $row["menu_name"] . "<br />";
+	echo $row["position"] . "<br />";
+	echo $row["visible"] . "<br />";
 	echo "<hr />";
 }
 ?>
