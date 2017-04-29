@@ -43,3 +43,14 @@
 	mysql -u 'username' -p 'db_name' 
 	-- to login db_name with username
 	```
+## PHP Access Mysql
+* mysql - Original MySQL API
+* mysqli - MySQL "improved" API
+* PDO - PHP Data Objects
+
+### PHP Database Interaction in Five Steps:
+1. Create database connection
+2. Perform database query
+3. Use returned data (if any)
+4. Release returned data
+5. Close database connection
