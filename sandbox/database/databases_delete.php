@@ -16,16 +16,24 @@
 ?>
 
 <?php
+	// Often these are form values in $_POST
+	$id = 4;
+	
+
 	// 2. Perform database query
-	$query = "SELECT * ";
-	$query .= "FROM subjects ";       // care the white space at last.
-	$query .= "WHERE visible = 1 ";
-	$query .= "ORDER BY position ASC ";
+	$query = "DELETE FROM subjects WHERE id = {$id}
+			  LIMIT 1";
 
 	$result = mysqli_query($connection, $query);  // collection
 	// Test if there is query error
-	if (!$result) {
-		die("Database query failed.");
+	if ($result && mysqli_affected_rows($connection) == 1) {
+		// Success
+		// redirect_to("somepage.php");
+		echo "Success";
+	} else {
+		// Failure
+		// $message = "Subject creation failed.";
+		die("Database query failed. " . mysqli_error($connection));
 	}
 
 ?>
@@ -36,25 +44,8 @@
 	<title>Database</title>
 </head>
 <body>
-	<ul>
-		<?php
-			// 3. use returned data (if any)
-			// $row = mysqli_fetch_row($result)
-			while ($row = mysqli_fetch_assoc($result)) {
-				// output data from each row
-				//var_dump($row); 
-		?>
-			<li><?php echo $row["menu_name"] . " (" . $row["id"] . ") " ."<br />"; ?></li>
-		<?php
-			}
-		?>
-	</ul>
+	
 
-
-<?php
-	// 4. release returned data -- resoource collection
-	mysqli_free_result($result);
-?>
 
 </body>
 </html>

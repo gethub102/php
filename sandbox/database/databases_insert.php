@@ -16,16 +16,25 @@
 ?>
 
 <?php
+	// Often these are form values in $_POST
+	$menu_name = "Edit me";
+	$position = 4;
+	$visible = 1;
+
 	// 2. Perform database query
-	$query = "SELECT * ";
-	$query .= "FROM subjects ";       // care the white space at last.
-	$query .= "WHERE visible = 1 ";
-	$query .= "ORDER BY position ASC ";
+	$query = "INSERT INTO subjects (menu_name, position, visible)
+			  VALUES ('{$menu_name}', {$position}, {$visible})";
 
 	$result = mysqli_query($connection, $query);  // collection
 	// Test if there is query error
-	if (!$result) {
-		die("Database query failed.");
+	if ($result) {
+		// Success
+		// redirect_to("somepage.php");
+		echo "Success";
+	} else {
+		// Failure
+		// $message = "Subject creation failed.";
+		die("Database query failed. " . mysqli_error($connection));
 	}
 
 ?>
@@ -36,25 +45,8 @@
 	<title>Database</title>
 </head>
 <body>
-	<ul>
-		<?php
-			// 3. use returned data (if any)
-			// $row = mysqli_fetch_row($result)
-			while ($row = mysqli_fetch_assoc($result)) {
-				// output data from each row
-				//var_dump($row); 
-		?>
-			<li><?php echo $row["menu_name"] . " (" . $row["id"] . ") " ."<br />"; ?></li>
-		<?php
-			}
-		?>
-	</ul>
+	
 
-
-<?php
-	// 4. release returned data -- resoource collection
-	mysqli_free_result($result);
-?>
 
 </body>
 </html>
